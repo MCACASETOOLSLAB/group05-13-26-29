@@ -1,0 +1,16 @@
+
+This is for passsenger code for multicar roller coaster
+
+
+boardQueue.wait()
+ board()
+
+ mutex.wait()
+ boarders += 1
+ if boarders == C:
+ allAboard.signal()
+ boarders = 0
+ mutex.signal()
+
+ unboardQueue.wait()
+ unboard()
