@@ -1,0 +1,38 @@
+This proble of roller coaster is done till now only for one car this can be extendede for multi cars then following rules are to 
+be applied
+
+
+• Only one car can be boarding at a time.
+• Multiple cars can be on the track concurrently.
+• Since cars can’t pass each other, they have to unload in the same order
+they boarded.
+• All the threads from one carload must disembark before any of the threads
+from subsequent carloads.
+
+
+
+Overview of solution can be 
+ loadingArea = [Semaphore(0) for i in range(m)]
+ loadingArea[1].signal()
+ unloadingArea = [Semaphore(0) for i in range(m)]
+ unloadingArea[1].signal()
+ def next(i):
+ return (i + 1) % m
+
+
+
+
+Car Code:
+ loadingArea[i].wait()
+ load()
+ boardQueue.signal(C)
+ allAboard.wait()
+ loadingArea[next(i)].signal()
+
+ run()
+
+ unloadingArea[i].wait()
+ unload()
+ unboardQueue.signal(C)
+ allAshore.wait()
+ unloadingArea[next(i)].signal()
